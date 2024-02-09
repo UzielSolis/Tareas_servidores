@@ -1,7 +1,7 @@
 # Tarea1
 
 ## Descripción
-Este es un proyecto de ejemplo para la tarea 1.
+Tarea 1. CRUD
 
 ## Instalación
 1. Clona este repositorio en tu máquina local usando el siguiente comando:

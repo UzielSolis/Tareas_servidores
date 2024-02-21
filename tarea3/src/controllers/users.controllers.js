@@ -3,7 +3,6 @@ const ResponseStatus = require('../utils/response-status')
 
 class UsersController {
     getUsers(req, res) {
-        console.log('Quien hizo la petición? ', req.user);
         User.find().then(response => {
             res.send(response);
         }).catch(e => {
@@ -11,13 +10,67 @@ class UsersController {
         })
     }
 
-    createUser(req, res) {
-        res.send('will create a new user');
+    getUserById(req, res) {
+        const id = req.params.id;
+
+        User.findById(id).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');
+        });
     }
 
-    getUserById(req, res) {
-        const userId = req.params.id;
-        res.send('get user ' + userId);
+    createUser(req, res) {
+        const data = {
+            name : req.body.name,
+            email : req.body.email,
+            password : req.body.password
+        }
+
+        User.create(data).then(response => {
+            res.send(response);
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('failed to create user');
+        })
+    }
+
+    updateUser(req, res) {
+        const id = req.params.id;
+        const data = {
+            name : req.body.name,
+            email : req.body.email,
+            password : req.body.password,
+            status : req.body.status,
+            role : req.body.role
+        }
+        if(req.body.name != undefined) {
+            data.name = req.body.name;
+        } else if(req.body.email != undefined) {
+            data.email = req.body.email;
+        } else if(req.body.password != undefined) {
+            data.password = req.body.password;
+        } else if(req.body.status != undefined) {
+            data.status = req.body.status;
+        } else if(req.body.role != undefined) {
+            data.role = req.body.role;
+        }
+
+        User.findByIdAndUpdate(id, data, {new : true}).then(response => {
+            console.log('Usuario actualizado');
+            res.send(response);
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('failed to update user');
+        });
+    }
+
+    deleteUser(req, res) {
+        const id = req.params.id;
+
+        User.findByIdAndDelete(id).then(response => {
+            res.send('ok');
+        }).catch(e => {
+            res.status(ResponseStatus.BAD_REQUEST).send('failed to delete user');
+        });
     }
 
     signup(req, res) {

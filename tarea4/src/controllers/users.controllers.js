@@ -4,37 +4,6 @@ const ResponseStatus = require('../utils/response-status');
 const hashPassword = require('../utils/hash-password');
 
 class UsersController {
-    getUsers(req, res) {
-        User.find().then(response => {
-            res.send(response);
-        }).catch(e => {
-            res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');
-        })
-    }
-
-    createUser(req, res) {
-        const data = {
-            name : req.body.name,
-            email : req.body.email,
-            password : req.body.password
-        }
-
-        User.create(data).then(response => {
-            res.send(response);
-        }).catch(e => {
-            res.status(ResponseStatus.BAD_REQUEST).send('failed to create user');
-        })
-    }
-
-    getUserById(req, res) {
-        const id = req.params.id;
-
-        User.findById(id).then(response => {
-            res.send(response);
-        }).catch(e => {
-            res.status(ResponseStatus.BAD_REQUEST).send('something went wrong');
-        });
-    }
 
     signup(req, res) {
         const data = {
@@ -44,10 +13,7 @@ class UsersController {
         }
 
         User.create(data).then(response => {
-            res.send({
-                name: response.name,
-                email: response.email
-            });
+            res.status(ResponseStatus.CREATED).send('user created');
         }).catch(e => {
             res.status(ResponseStatus.BAD_REQUEST).send('failed to create user');
         })
@@ -67,9 +33,7 @@ class UsersController {
                 }
 
                 const token = jwt.sign(data, process.env.TOKEN_KEY);
-                res.send({
-                    token
-                })
+                
 
             } else {
                 res.status(ResponseStatus.UNAUTHORIZED).send('failed to login');

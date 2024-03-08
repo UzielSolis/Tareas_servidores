@@ -1,34 +1,12 @@
-const router = require('express').Router();
-const express = require('express');
-const path = require('path');
-const authRouter = require('./auth.routes');
-const userRouter = require('./user.routes');
+const router = require("express").Router();
+const authRoutes = require("../routes/auth.routes");
+const newsRoutes = require("../routes/news.routes");
 
-router.use(express.json());
-router.use('/auth', authRouter);
-router.use('/user', userRouter);
-
-router.get('', (req, res) => {
-    //res.send('api works');
-    //const url = path.join(__dirname, '../../src/views/index.html');
-    //res.sendFile(url);
-    res.render('home', {
-        layout: 'main'
-    });
+router.get("/", (req, res) => {
+    res.send("index routes works!");
 });
 
-router.get('/login', (req, res) => {
-    res.render('login');
-});
-
-router.get('/signup', (req, res) => {
-    res.render('register');
-});
-
-router.get('/noticias', (req, res) => {
-    res.render('noticias', {
-        layout: 'main-login'
-    });
-});
+router.use("/auth", authRoutes);
+router.use("/news", newsRoutes);
 
 module.exports = router;

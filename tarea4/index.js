@@ -12,6 +12,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
+app.use(express.json());
 app.use('/assets', express.static(path.join(__dirname, 'public')));
 app.use(routes);
 

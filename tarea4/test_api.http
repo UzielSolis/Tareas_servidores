@@ -17,5 +17,5 @@ Content-Type: application/json
     "password": "123456"
 }
 
-### Get routes ###
-GET http://localhost:3000/news?theme=technology
+### Get news ###
+GET http://localhost:3000/news?theme=apple&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVhbm5lIEdyYWhhbSIsImVtYWlsIjoiU2luY2VyZUBhcHJpbC5iaXoiLCJpYXQiOjE3MTAyMTc1Njl9.4dNSQP52rtkzAmO6jDVKfU-AokXvwvElpuYsJua4mcc

@@ -33,7 +33,7 @@ class UsersController {
                 }
 
                 const token = jwt.sign(data, process.env.TOKEN_KEY);
-                
+                res.status(ResponseStatus.SUCCESS).send({token});                
 
             } else {
                 res.status(ResponseStatus.UNAUTHORIZED).send('failed to login');

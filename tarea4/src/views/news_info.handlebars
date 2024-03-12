@@ -1,0 +1,20 @@
+<div class="search-bar">
+    <input type="text" placeholder="Buscar..." id="searchInput">
+    <button id="searchButton" onclick="getNews()">Buscar</button>
+    <button id="logoutButton" onclick="logout()">Cerrar Sesión</button>
+</div>
+{{#if news}}
+	{{#each news}}
+		<div class="news-card">
+			<div class="news-content">
+				<h2 class="news-title">{{title}}</h2>
+				<p class="news-author">By {{author}}</p>
+				<p class="news-description">{{description}}</p>
+				<a href="{{url}}" class="news-link" target="_blank">Read more</a>
+				<p class="news-published">Published at: {{publishedAt}}</p>
+			</div>
+		</div>
+	{{/each}}
+{{else}}
+	<p>No news to show</p>
+{{/if}}

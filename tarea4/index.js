@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const { engine } = require('express-handlebars');
 
 const app = express();
-app.use(express.urlencoded({ extended: true }));
+let port = process.env.PORT || 3000;
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -15,8 +15,6 @@ app.set('views', './src/views');
 app.use(express.json());
 app.use('/assets', express.static(path.join(__dirname, 'public')));
 app.use(routes);
-
-let port = process.env.PORT;
 
 // Connect to database
 const db_url = process.env.DB_URL;

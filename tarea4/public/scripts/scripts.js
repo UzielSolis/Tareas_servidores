@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function signup() {
+    console.log("signup");
     var email = document.getElementById('registerEmail').value;
     var password = document.getElementById('registerPassword').value;
     var name = document.getElementById('registerName').value;
@@ -85,6 +86,7 @@ function signup() {
         body: JSON.stringify( { name, email, password }),
     })
         .then((response) => {
+            debugger;
             if (!response.ok) {
                 return response.text().then((text) => {
                     throw new Error(text);
@@ -99,6 +101,7 @@ function signup() {
             return response.text();
         })
         .then((data) => {
+            debugger;
             alert("User created successfully. You can now log in");
             closeModal('registerModal');
             window.location.href = '/';

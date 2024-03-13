@@ -36,7 +36,7 @@ npm run dev
 PORT = 3001
 
 # URL mongoDB
-DB_URL = mongodb+srv://Uziel:admin@web.g4sbtuw.mongodb.net/Tarea4?retryWrites=true&w=majority&appName=web
+DB_URL
 
 # API key
 API_KEY

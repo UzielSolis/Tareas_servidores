@@ -1,0 +1,21 @@
+### Create user ###
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "name": "Leanne Graham",
+    "email": "Sincere@april.biz",
+    "password": "123456"
+}
+
+### Login user ###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "Sincere@april.biz",
+    "password": "123456"
+}
+
+### Get news ###
+GET http://localhost:3000/news?theme=apple&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGVhbm5lIEdyYWhhbSIsImVtYWlsIjoiU2luY2VyZUBhcHJpbC5iaXoiLCJpYXQiOjE3MTAyMTc1Njl9.4dNSQP52rtkzAmO6jDVKfU-AokXvwvElpuYsJua4mcc

@@ -1,0 +1,31 @@
+<div class="search-bar">
+    <input type="text" placeholder="Buscar..." id="searchInput">
+    <button id="searchButton">Buscar</button>
+    <button id="loginButton">Iniciar Sesión</button>
+    <button id="registerButton">Registrarse</button>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form>
+            <input type="email" placeholder="Email" id="loginEmail" required>
+            <input type="password" placeholder="Contraseña" id="loginPassword" required>
+            <button id="submitLogin" onclick="login()" >Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('registerModal')">&times;</span>
+        <h2>Registrarse</h2>
+        <form id="registerForm">
+            <input type="text" placeholder="Nombre" id="registerName" required>
+            <input type="email" placeholder="Email" id="registerEmail" required>
+            <input type="password" placeholder="Contraseña" id="registerPassword" required>
+            <button type="button" id="submitRegister" onclick="signup()" >Registrarse</button>
+        </form>
+    </div>
+</div>
